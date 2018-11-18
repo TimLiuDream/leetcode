@@ -6,7 +6,7 @@ import (
 )
 
 func longestCommonPrefix(strs []string) string {
-	result := ""
+	//result := ""
 	slen := len(strs)
 	//特殊情况，当切片中没有任何元素的时候返回""
 	if slen == 0 {
