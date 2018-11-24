@@ -11,15 +11,15 @@ type ListNode struct {
 //交换链表中相邻两个元素的位置
 //给定 1->2->3->4这样一个链表, 输出为 2->1->4->3.
 func swapPairs(head *ListNode) *ListNode {
-	var pre *ListNode = nil
-	pre.Next = head
-	for pre.Next != nil && pre.Next.Next != nil {
-		a := pre.Next
-		b := a.Next
-		pre.Next, b.Next, a.Next = b, a, b.Next
-		pre = a
+	//当是空链表的时候直接返回
+	if head == nil || head.Next == nil {
+		return head
 	}
-	return pre
+
+	newHead := head.Next
+	head.Next = swapPairs(newHead.Next)//利用递归不断的去交换
+	newHead.Next = head
+	return newHead
 }
 
 func main() {
