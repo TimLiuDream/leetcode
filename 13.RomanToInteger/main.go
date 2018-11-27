@@ -8,7 +8,7 @@ func romanToInt(s string) int {
 	result := 0
 	for len(s) != 0 { //对字符串循环
 		if len(s) > 1 { //当长度大于1的时候，才有必要去特殊罗马数字map中查找
-			chars := s[0:2] //首先我们得拿出两个字符去特殊的map中查找
+			chars := s[0:2]                                //首先我们得拿出两个字符去特殊的map中查找
 			if v, ok := specialRomanStringMap[chars]; ok { //当存在的时候记录值
 				result += v
 				s = s[2:]
@@ -38,9 +38,9 @@ func romanToInt1(s string) int {
 
 	last := 0
 	for i := len(s) - 1; i >= 0; i-- {
-		temp := m[s[i]]//拿到最后一位
+		temp := m[s[i]] //拿到最后一位
 
-		sign := 1//用于标记是减还是加
+		sign := 1 //用于标记是减还是加
 		if temp < last {
 			//小数在大数的左边，要减去小数
 			sign = -1

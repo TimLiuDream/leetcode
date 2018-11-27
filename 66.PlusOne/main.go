@@ -7,15 +7,15 @@ func plusOne(digits []int) []int {
 	isPlusOne := true
 	for i := len(digits) - 1; i >= 0; i-- {
 		if isPlusOne {
-			digits[i] += 1
+			digits[i]++
 			if digits[i] == 10 {
 				//这里还需要判断是不是已经到0这个下标了，当是0这个下标，但是还需要加1的话，
 				//那就要在切片的最前面插入
 				digits[i] = 0
 				isPlusOne = true
-				if i==0{//已经到了0这个小标
-					s:=[]int{1}
-					digits = append(s,digits...)
+				if i == 0 { //已经到了0这个小标
+					s := []int{1}
+					digits = append(s, digits...)
 				}
 				continue
 			}

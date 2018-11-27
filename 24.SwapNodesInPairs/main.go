@@ -17,7 +17,7 @@ func swapPairs(head *ListNode) *ListNode {
 	}
 
 	newHead := head.Next
-	head.Next = swapPairs(newHead.Next)//利用递归不断的去交换
+	head.Next = swapPairs(newHead.Next) //利用递归不断的去交换
 	newHead.Next = head
 	return newHead
 }

@@ -1,8 +1,8 @@
 package main
 
 import (
-	"math"
 	"fmt"
+	"math"
 	"strconv"
 )
 
@@ -66,9 +66,8 @@ func isPalindrome2(x int) bool {
 	}
 	if len(is) == 1 || len(is) == 0 {
 		return true
-	} else {
-		return false
 	}
+	return false
 }
 
 func isPalindrome3(x int) bool {

@@ -42,12 +42,12 @@ func maxSubArrayKMP(nums []int) int {
 	for i := 0; i < len(nums); i++ {
 		//这里是核心判断
 		//当前几项大于0，那就相加
-		if (res > 0) {
+		if res > 0 {
 			res += nums[i]
-		} else {//如果不是，那就直接是当前项
+		} else { //如果不是，那就直接是当前项
 			res = nums[i]
 		}
-		if (sum < res) {
+		if sum < res {
 			sum = res
 		}
 	}
