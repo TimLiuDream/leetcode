@@ -7,31 +7,16 @@ import (
 )
 
 func isSymmetric(root *leetcode.TreeNode) bool {
-	if root.Left == nil || root.Right == nil {
-		return false
-	}
-	if root.Left.Val != root.Right.Val {
-		return false
-	}
-
-	result := true
-	nodeValArray := make([]int, 0)
-	for root.Left != nil && root.Right != nil {
-		storageLayerNode(root.Left, root.Right, nodeValArray)
-		for i, j := 0, len(nodeValArray)-1; i <= j; {
-			if nodeValArray[j] != nodeValArray[j] {
-				result = false
-				break
-			}
-			i++
-			j--
-		}
-	}
-	return result
+	return equal(root, root)
 }
 
-func storageLayerNode(leftParent *leetcode.TreeNode, rightParent *leetcode.TreeNode, nodeValArray []int) {
-
+func equal(t1 *leetcode.TreeNode, t2 *leetcode.TreeNode) bool {
+	if t1 == nil && t2 == nil {
+		return true
+	} else if t1 == nil || t2 == nil {
+		return false
+	}
+	return t1.Val == t2.Val && equal(t1.Left, t2.Right) && equal(t1.Right, t2.Left)
 }
 
 func main() {
@@ -52,7 +37,7 @@ func main() {
 
 	root.Left = l1l
 	root.Right = l1r
-	l1l.Right = l11r
+	l1l.Left = l11r
 	l1r.Right = l21r
 
 	fmt.Println(isSymmetric(root))
