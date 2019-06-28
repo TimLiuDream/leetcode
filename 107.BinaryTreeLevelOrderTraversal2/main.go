@@ -25,6 +25,7 @@ func main() {
 	fmt.Println(result)
 }
 
+// Node 树节点数据，有层级别数据
 type Node struct {
 	level int
 	node  *leetcode.TreeNode
