@@ -9,6 +9,7 @@ func main() {
 	fmt.Println(fib(5))
 }
 
+// 不缓存
 func fib(N int) int {
 	if N == 0 {
 		return 0
@@ -19,6 +20,7 @@ func fib(N int) int {
 	return fib(N-1) + fib(N-2)
 }
 
+// 缓存
 func fib2(N int) int {
 	if N <= 1 {
 		return N
