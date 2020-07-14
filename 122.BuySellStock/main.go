@@ -2,6 +2,7 @@ package main
 
 import "fmt"
 
+// 所有的上升线段都计算进去
 func maxProfit(prices []int) int {
 	result := 0
 	for index := 0; index < len(prices)-1; index++ {
