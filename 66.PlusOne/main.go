@@ -26,10 +26,10 @@ func plusOne(digits []int) []int {
 }
 
 func main() {
-	//digits := []int{1, 2, 3}
-	//digits1 := []int{4, 3, 2, 1}
+	digits := []int{1, 2, 3}
+	digits1 := []int{4, 3, 2, 1}
 	digits2 := []int{9}
-	//fmt.Println(plusOne(digits))
-	//fmt.Println(plusOne(digits1))
+	fmt.Println(plusOne(digits))
+	fmt.Println(plusOne(digits1))
 	fmt.Println(plusOne(digits2))
 }
