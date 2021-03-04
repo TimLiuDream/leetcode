@@ -4,22 +4,22 @@ import (
 	"fmt"
 )
 
-type TreeNode struct {
+type treeNode struct {
 	Val   int
-	Left  *TreeNode
-	Right *TreeNode
+	Left  *treeNode
+	Right *treeNode
 }
 
 func main() {
-	root := new(TreeNode)
+	root := new(treeNode)
 	root.Val = 3
-	levelOneLeft := new(TreeNode)
+	levelOneLeft := new(treeNode)
 	levelOneLeft.Val = 9
-	levelOneRight := new(TreeNode)
+	levelOneRight := new(treeNode)
 	levelOneRight.Val = 20
-	levelTwoLeft := new(TreeNode)
+	levelTwoLeft := new(treeNode)
 	levelTwoLeft.Val = 15
-	levelTwoRight := new(TreeNode)
+	levelTwoRight := new(treeNode)
 	levelTwoRight.Val = 7
 
 	root.Left = levelOneLeft
@@ -30,11 +30,11 @@ func main() {
 	fmt.Println(zigzagLevelOrder(root))
 }
 
-func zigzagLevelOrder(root *TreeNode) (ans [][]int) {
+func zigzagLevelOrder(root *treeNode) (ans [][]int) {
 	if root == nil {
 		return
 	}
-	queue := []*TreeNode{root}
+	queue := []*treeNode{root}
 	for level := 0; len(queue) > 0; level++ {
 		vals := []int{}
 		q := queue
