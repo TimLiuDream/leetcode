@@ -2,7 +2,8 @@ package main
 
 import "fmt"
 
-// Label 数组 哈希表
+// Label 数组
+// Label 哈希表
 
 // 给定一个整数数组和一个目标值，找出数组中和为目标值的两个数。
 func twoSum(nums []int, target int) []int {

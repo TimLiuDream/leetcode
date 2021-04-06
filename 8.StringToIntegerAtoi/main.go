@@ -6,6 +6,9 @@ import (
 	"strings"
 )
 
+// Label 数学
+// Label 字符串
+
 func main() {
 	s := "42"
 	fmt.Println(myAtoi(s))

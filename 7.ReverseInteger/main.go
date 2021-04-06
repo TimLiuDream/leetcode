@@ -5,6 +5,8 @@ import (
 	"math"
 )
 
+// Label 数学
+
 func reverse(x int) int {
 	//用来记录原数据是正还是负的
 	sign := 1
