@@ -6,6 +6,8 @@ import (
 	"strconv"
 )
 
+// Label 数学
+
 func isPalindrome(x int) bool {
 	if x < 0 {
 		return false

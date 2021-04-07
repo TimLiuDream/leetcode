@@ -2,6 +2,9 @@ package main
 
 import "fmt"
 
+// Label 数学
+// Label 字符串
+
 func romanToInt(s string) int {
 	specialRomanStringMap := map[string]int{"IV": 4, "IX": 9, "XL": 40, "XC": 90, "CD": 400, "CM": 900} //特殊罗马数字
 	romanStringMap := map[string]int{"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}   //正常罗马数字
