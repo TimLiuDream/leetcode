@@ -2,6 +2,8 @@ package main
 
 import "fmt"
 
+// Label 位运算符
+
 func main() {
 	encoded := []int{3, 1}
 	fmt.Println(decode(encoded))
