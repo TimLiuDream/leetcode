@@ -2,11 +2,16 @@ package main
 
 import (
 	"fmt"
-	"github.com/timliudream/leetcode"
 	"math"
 )
 
-func maxDepth(root *leetcode.TreeNode) int {
+type TreeNode struct {
+	Val   int
+	Left  *TreeNode
+	Right *TreeNode
+}
+
+func maxDepth(root *TreeNode) int {
 	if root == nil {
 		return 0
 	}
@@ -14,15 +19,15 @@ func maxDepth(root *leetcode.TreeNode) int {
 }
 
 func main() {
-	root := new(leetcode.TreeNode)
+	root := new(TreeNode)
 	root.Val = 3
-	n1 := new(leetcode.TreeNode)
+	n1 := new(TreeNode)
 	n1.Val = 9
-	n2 := new(leetcode.TreeNode)
+	n2 := new(TreeNode)
 	n2.Val = 20
-	n3 := new(leetcode.TreeNode)
+	n3 := new(TreeNode)
 	n3.Val = 15
-	n4 := new(leetcode.TreeNode)
+	n4 := new(TreeNode)
 	n4.Val = 7
 
 	root.Left = n1

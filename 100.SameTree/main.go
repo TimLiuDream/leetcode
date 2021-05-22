@@ -2,10 +2,15 @@ package main
 
 import (
 	"fmt"
-	"github.com/timliudream/leetcode"
 )
 
-func isSameTree(p *leetcode.TreeNode, q *leetcode.TreeNode) bool {
+type TreeNode struct {
+	Val   int
+	Left  *TreeNode
+	Right *TreeNode
+}
+
+func isSameTree(p *TreeNode, q *TreeNode) bool {
 	if p == nil && q == nil {
 		return true
 	} else if p == nil && q != nil {
@@ -35,18 +40,18 @@ func isSameTree(p *leetcode.TreeNode, q *leetcode.TreeNode) bool {
 }
 
 func main() {
-	tree1 := new(leetcode.TreeNode)
+	tree1 := new(TreeNode)
 	tree1.Val = 1
-	tree1left := new(leetcode.TreeNode)
+	tree1left := new(TreeNode)
 	tree1left.Val = 2
 	//tree1right := new(leetcode.TreeNode)
 	//tree1right.Val = 3
 	tree1.Left = tree1left
 	//tree1.Right = tree1right
 
-	tree2 := new(leetcode.TreeNode)
+	tree2 := new(TreeNode)
 	tree2.Val = 1
-	tree2left := new(leetcode.TreeNode)
+	tree2left := new(TreeNode)
 	tree2left.Val = 2
 	//tree2righe := new(leetcode.TreeNode)
 	//tree2righe.Val = 3

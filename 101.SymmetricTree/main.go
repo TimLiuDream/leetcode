@@ -2,15 +2,19 @@ package main
 
 import (
 	"fmt"
-
-	"github.com/timliudream/leetcode"
 )
 
-func isSymmetric(root *leetcode.TreeNode) bool {
+type TreeNode struct {
+	Val   int
+	Left  *TreeNode
+	Right *TreeNode
+}
+
+func isSymmetric(root *TreeNode) bool {
 	return equal(root, root)
 }
 
-func equal(t1 *leetcode.TreeNode, t2 *leetcode.TreeNode) bool {
+func equal(t1 *TreeNode, t2 *TreeNode) bool {
 	if t1 == nil && t2 == nil {
 		return true
 	} else if t1 == nil || t2 == nil {
@@ -20,19 +24,19 @@ func equal(t1 *leetcode.TreeNode, t2 *leetcode.TreeNode) bool {
 }
 
 func main() {
-	root := new(leetcode.TreeNode)
+	root := new(TreeNode)
 	root.Val = 1
 
-	l1l := new(leetcode.TreeNode)
+	l1l := new(TreeNode)
 	l1l.Val = 2
 
-	l1r := new(leetcode.TreeNode)
+	l1r := new(TreeNode)
 	l1r.Val = 2
 
-	l11r := new(leetcode.TreeNode)
+	l11r := new(TreeNode)
 	l11r.Val = 3
 
-	l21r := new(leetcode.TreeNode)
+	l21r := new(TreeNode)
 	l21r.Val = 3
 
 	root.Left = l1l

@@ -3,11 +3,15 @@ package main
 import (
 	"container/list"
 	"fmt"
-
-	"github.com/timliudream/leetcode"
 )
 
-func levelOrder(root *leetcode.TreeNode) [][]int {
+type TreeNode struct {
+	Val   int
+	Left  *TreeNode
+	Right *TreeNode
+}
+
+func levelOrder(root *TreeNode) [][]int {
 	var result [][]int
 	if root == nil {
 		return result
@@ -23,7 +27,7 @@ func levelOrder(root *leetcode.TreeNode) [][]int {
 		count := queue.Len()
 		for count > 0 {
 			element := queue.Front()
-			node := element.Value.(*leetcode.TreeNode)
+			node := element.Value.(*TreeNode)
 
 			if _, exist := visited[node.Val]; exist {
 				continue
@@ -46,15 +50,15 @@ func levelOrder(root *leetcode.TreeNode) [][]int {
 }
 
 func main() {
-	root := new(leetcode.TreeNode)
+	root := new(TreeNode)
 	root.Val = 3
-	n1 := new(leetcode.TreeNode)
+	n1 := new(TreeNode)
 	n1.Val = 9
-	n2 := new(leetcode.TreeNode)
+	n2 := new(TreeNode)
 	n2.Val = 20
-	n3 := new(leetcode.TreeNode)
+	n3 := new(TreeNode)
 	n3.Val = 15
-	n4 := new(leetcode.TreeNode)
+	n4 := new(TreeNode)
 	n4.Val = 7
 
 	root.Left = n1

@@ -2,21 +2,25 @@ package main
 
 import (
 	"fmt"
-
-	"github.com/timliudream/leetcode"
 )
 
+type TreeNode struct {
+	Val   int
+	Left  *TreeNode
+	Right *TreeNode
+}
+
 func main() {
-	root := new(leetcode.TreeNode)
+	root := new(TreeNode)
 	root.Val = 3
-	leftNode := new(leetcode.TreeNode)
+	leftNode := new(TreeNode)
 	leftNode.Val = 9
-	rightNode := new(leetcode.TreeNode)
+	rightNode := new(TreeNode)
 	rightNode.Val = 20
 	root.Left = leftNode
 	root.Right = rightNode
-	rightLeftNode := new(leetcode.TreeNode)
-	rightRightNode := new(leetcode.TreeNode)
+	rightLeftNode := new(TreeNode)
+	rightRightNode := new(TreeNode)
 	rightLeftNode.Val = 15
 	rightRightNode.Val = 7
 	rightNode.Left = rightLeftNode
@@ -28,10 +32,10 @@ func main() {
 // Node 树节点数据，有层级别数据
 type Node struct {
 	level int
-	node  *leetcode.TreeNode
+	node  *TreeNode
 }
 
-func levelOrderBottom(root *leetcode.TreeNode) [][]int {
+func levelOrderBottom(root *TreeNode) [][]int {
 	result := [][]int{}
 	q := []Node{} // 队列
 	q = append(q, Node{0, root})
