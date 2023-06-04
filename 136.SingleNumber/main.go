@@ -4,19 +4,17 @@ import "fmt"
 
 func singleNumber(nums []int) int {
 	result := 0
-	numCount := make(map[int]int)
+	numMap := make(map[int]struct{})
 	for _, num := range nums {
-		_, ok := numCount[num]
+		_, ok := numMap[num]
 		if !ok {
-			numCount[num] = 1
+			numMap[num] = struct{}{}
 		} else {
-			delete(numCount, num)
+			delete(numMap, num)
 		}
 	}
-	for key, value := range numCount {
-		if value == 1 {
-			result = key
-		}
+	for key, _ := range numMap {
+		result = key
 	}
 	return result
 }

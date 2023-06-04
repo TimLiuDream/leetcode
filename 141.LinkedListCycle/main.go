@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 type ListNode struct {
 	Val  int
@@ -20,10 +22,23 @@ func hasCycle(head *ListNode) bool {
 	return false
 }
 
+func hasCycle1(head *ListNode) bool {
+	m := make(map[*ListNode]struct{})
+	for head != nil {
+		_, ok := m[head]
+		if ok {
+			return true
+		}
+		m[head] = struct{}{}
+		head = head.Next
+	}
+	return false
+}
+
 func main() {
 	head := ListNode{}
 	head.Val = 1
-	fmt.Println(hasCycle(&head))
+	fmt.Println(hasCycle1(&head))
 
 	head1 := ListNode{}
 	head1.Val = 1
@@ -31,7 +46,7 @@ func main() {
 	node1.Val = 2
 	head1.Next = &node1
 	node1.Next = &head1
-	fmt.Println(hasCycle(&head1))
+	fmt.Println(hasCycle1(&head1))
 
 	head2 := ListNode{}
 	head2.Val = 3
@@ -45,5 +60,5 @@ func main() {
 	node21.Next = &node22
 	node22.Next = &node23
 	node23.Next = &node21
-	fmt.Println(hasCycle(&head2))
+	fmt.Println(hasCycle1(&head2))
 }

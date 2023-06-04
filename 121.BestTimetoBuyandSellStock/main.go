@@ -21,12 +21,12 @@ func maxProfit(prices []int) int {
 	}
 	min := math.MaxInt64
 	maxResult := 0
-	for _, price := range prices {
-		if price < min {
-			min = price
+	for i := 0; i < len(prices); i++ {
+		if prices[i] < min {
+			min = prices[i]
 		}
-		if maxResult < price-min {
-			maxResult = price - min
+		if prices[i]-min > maxResult {
+			maxResult = prices[i] - min
 		}
 	}
 	return maxResult
