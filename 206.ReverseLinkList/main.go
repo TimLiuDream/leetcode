@@ -13,6 +13,11 @@ func reversrList(head *ListNode) *ListNode {
 	cur := head
 	var pre *ListNode = nil
 	for cur != nil {
+		//next := curr.Next
+		//curr.Next = prev
+		//prev = curr
+		//curr = next
+
 		pre, cur, cur.Next = cur, cur.Next, pre //这句话最重要
 	}
 	return pre
