@@ -2,22 +2,17 @@ package main
 
 import "fmt"
 
-//链表节点
+// 链表节点
 type ListNode struct {
 	Val  int
 	Next *ListNode
 }
 
-//反转链表的实现
+// 反转链表的实现
 func reversrList(head *ListNode) *ListNode {
 	cur := head
 	var pre *ListNode = nil
 	for cur != nil {
-		//next := curr.Next
-		//curr.Next = prev
-		//prev = curr
-		//curr = next
-
 		pre, cur, cur.Next = cur, cur.Next, pre //这句话最重要
 	}
 	return pre
