@@ -30,11 +30,7 @@ func isValid(s string) bool {
 	//判断栈中是否没有元素
 	//是的话返回true
 	//否则返回false
-	if len(stack) == 0 {
-		return true
-	} else {
-		return false
-	}
+	return len(stack) == 0
 }
 
 func main() {

@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"log"
 )
 
 type MinStack struct {
@@ -12,9 +11,11 @@ type MinStack struct {
 
 /** initialize your data structure here. */
 func Constructor() MinStack {
-	elements := make([]int, 0)
-	min := make([]int, 0)
-	return MinStack{Elements: elements, Min: min}
+	elements, mins := make([]int, 0), make([]int, 0)
+	return MinStack{
+		Elements: elements,
+		Min:      mins,
+	}
 }
 
 func (this *MinStack) Push(x int) {
@@ -25,13 +26,9 @@ func (this *MinStack) Push(x int) {
 }
 
 func (this *MinStack) Pop() {
-	if len(this.Elements) == 0 {
-		return
-	}
 	n := this.Top()
 	this.Elements = this.Elements[:len(this.Elements)-1]
-
-	if n <= this.GetMin() {
+	if n == this.Min[len(this.Min)-1] {
 		this.Min = this.Min[:len(this.Min)-1]
 	}
 }
@@ -41,9 +38,6 @@ func (this *MinStack) Top() int {
 }
 
 func (this *MinStack) GetMin() int {
-	if len(this.Min) == 0 {
-		log.Fatalln("the stack is empty")
-	}
 	return this.Min[len(this.Min)-1]
 }
 
