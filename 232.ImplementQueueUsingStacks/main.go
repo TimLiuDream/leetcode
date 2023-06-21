@@ -20,19 +20,15 @@ func (this *MyQueue) Push(x int) {
 func (this *MyQueue) Pop() int {
 	//当输出栈不为空的，那就直接取出输出栈顶元素
 	if len(this.OutputStack) != 0 {
-		x := this.OutputStack[len(this.OutputStack)-1]
+		v := this.OutputStack[len(this.OutputStack)-1]
 		this.OutputStack = this.OutputStack[:len(this.OutputStack)-1]
-		return x
+		return v
 	}
-	//如果输出栈为空，但是输入栈不为空，那就把输入栈的元素放进输出栈，并去除栈顶元素
+	//如果输出栈为空，但是输入栈不为空，那就把输入栈的元素放进输出栈，并去除输出栈的栈顶元素
 	if len(this.InputStack) != 0 {
-		for i := len(this.InputStack); i > 0; i-- {
-			this.OutputStack = append(this.OutputStack, this.InputStack[i-1])
-			this.InputStack = this.InputStack[:len(this.InputStack)-1]
-		}
-		x := this.OutputStack[len(this.OutputStack)-1]
+		v := this.Peek()
 		this.OutputStack = this.OutputStack[:len(this.OutputStack)-1]
-		return x
+		return v
 	}
 	return 0 //两个栈都是空的
 }
@@ -43,9 +39,9 @@ func (this *MyQueue) Peek() int {
 		return this.OutputStack[len(this.OutputStack)-1]
 	}
 	if len(this.InputStack) != 0 {
-		for i := len(this.InputStack); i > 0; i-- {
-			this.OutputStack = append(this.OutputStack, this.InputStack[i-1])
-			this.InputStack = this.InputStack[:len(this.InputStack)-1]
+		for i := len(this.InputStack) - 1; i >= 0; i-- {
+			this.OutputStack = append(this.OutputStack, this.InputStack[i])
+			this.InputStack = this.InputStack[:i]
 		}
 		return this.OutputStack[len(this.OutputStack)-1]
 	}
