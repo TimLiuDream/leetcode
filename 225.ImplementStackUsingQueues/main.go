@@ -53,7 +53,7 @@ func (this *MyStack) Empty() bool {
 	return this.q1.Len()+this.q2.Len() == 0
 }
 
-//构造队列
+// 构造队列
 type Queue struct {
 	queue []int
 }
@@ -62,19 +62,19 @@ func NewQueue() *Queue {
 	return &Queue{[]int{}}
 }
 
-//将n放进队列中
+// 将n放进队列中
 func (queue *Queue) Push(n int) {
 	queue.queue = append(queue.queue, n)
 }
 
-//弹出最先进入队列的值
+// 弹出最先进入队列的值
 func (queue *Queue) Pop() int {
 	res := queue.queue[0]
 	queue.queue = queue.queue[1:]
 	return res
 }
 
-//查看队列的第一个元素
+// 查看队列的第一个元素
 func (queue *Queue) Peek() int {
 	res := queue.queue[0]
 	return res
