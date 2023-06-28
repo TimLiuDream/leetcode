@@ -22,13 +22,13 @@ func containsDuplicate(nums []int) bool {
 	if len(nums) == 0 || len(nums) == 1 {
 		return false
 	}
-	m := make(map[int]bool)
+	m := make(map[int]struct{})
 	for _, v := range nums {
-		if _, found := m[v]; !found {
-			m[v] = true
-		} else {
+		_, ok := m[v]
+		if ok {
 			return true
 		}
+		m[v] = struct{}{}
 	}
 	return false
 }

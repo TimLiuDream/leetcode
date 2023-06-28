@@ -13,12 +13,7 @@ func majorityElement(nums []int) int {
 func majorityElement1(nums []int) int {
 	numCountMap := make(map[int]int)
 	for _, num := range nums {
-		count, ok := numCountMap[num]
-		if !ok {
-			numCountMap[num] = 1
-		} else {
-			numCountMap[num] = count + 1
-		}
+		numCountMap[num]++
 	}
 
 	maxCount := 0
