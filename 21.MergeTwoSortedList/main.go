@@ -9,6 +9,7 @@ type ListNode struct {
 	Next *ListNode
 }
 
+// 递归解法
 func mergeTwoLists(l1 *ListNode, l2 *ListNode) *ListNode {
 	//如果有一条链是nil，直接返回另外一条链
 	if l1 == nil {
@@ -30,6 +31,28 @@ func mergeTwoLists(l1 *ListNode, l2 *ListNode) *ListNode {
 	return res
 }
 
+// 迭代解法
+func mergeTwoLists1(l1 *ListNode, l2 *ListNode) *ListNode {
+	dummy := &ListNode{}
+	cur := dummy
+	for l1 != nil && l2 != nil {
+		if l1.Val > l2.Val {
+			cur.Next = l2
+			l2 = l2.Next
+		} else {
+			cur.Next = l1
+			l1 = l1.Next
+		}
+		cur = cur.Next
+	}
+	if l1 == nil {
+		cur.Next = l2
+	} else {
+		cur.Next = l1
+	}
+	return dummy.Next
+}
+
 func main() {
 	ln11 := new(ListNode)
 	ln12 := new(ListNode)
@@ -49,6 +72,6 @@ func main() {
 	ln21.Next = ln22
 	ln22.Next = ln23
 
-	ln := mergeTwoLists(ln11, ln21)
+	ln := mergeTwoLists1(ln11, ln21)
 	fmt.Println(ln)
 }
