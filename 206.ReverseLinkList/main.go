@@ -10,14 +10,22 @@ type ListNode struct {
 
 // 反转链表的实现
 func reversrList(head *ListNode) *ListNode {
+	var pre *ListNode
+	curr := head
+	for curr != nil {
+		next := curr.Next
+		curr.Next = pre
+		pre = curr
+		curr = next
+	}
+	return pre
+}
+
+func reversrList1(head *ListNode) *ListNode {
 	cur := head
 	var pre *ListNode = nil
 	for cur != nil {
-		tmp := cur.Next
-		cur.Next = pre
-		pre = cur
-		cur = tmp
-		//pre, cur, cur.Next = cur, cur.Next, pre //这句话最重要
+		pre, cur, cur.Next = cur, cur.Next, pre //这句话最重要
 	}
 	return pre
 }
@@ -38,6 +46,6 @@ func main() {
 	ln3.Next = ln4
 	ln4.Next = ln5
 
-	pre := reversrList(head)
+	pre := reversrList1(head)
 	fmt.Println(pre)
 }
