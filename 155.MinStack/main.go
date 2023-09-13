@@ -11,10 +11,9 @@ type MinStack struct {
 
 /** initialize your data structure here. */
 func Constructor() MinStack {
-	elements, mins := make([]int, 0), make([]int, 0)
 	return MinStack{
-		Elements: elements,
-		Min:      mins,
+		Elements: make([]int, 0),
+		Min:      make([]int, 0),
 	}
 }
 
@@ -28,7 +27,7 @@ func (this *MinStack) Push(x int) {
 func (this *MinStack) Pop() {
 	n := this.Top()
 	this.Elements = this.Elements[:len(this.Elements)-1]
-	if n == this.Min[len(this.Min)-1] {
+	if this.GetMin() == n {
 		this.Min = this.Min[:len(this.Min)-1]
 	}
 }

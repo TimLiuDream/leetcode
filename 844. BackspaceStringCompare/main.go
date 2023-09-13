@@ -15,7 +15,7 @@ func main() {
 
 func backspaceCompare(s string, t string) bool {
 	buildStack := func(str string) []string {
-		stack := make([]string, 0)
+		stack := make([]string, 0, len(str))
 		for _, raw := range str {
 			c := string(raw)
 			if c != "#" {
@@ -31,13 +31,13 @@ func backspaceCompare(s string, t string) bool {
 	}
 	sStack := buildStack(s)
 	tStack := buildStack(t)
-	if len(sStack) == len(tStack) {
-		for i := 0; i < len(sStack); i++ {
-			if sStack[i] != tStack[i] {
-				return false
-			}
-		}
-		return true
+	if len(sStack) != len(tStack) {
+		return false
 	}
-	return false
+	for i := 0; i < len(sStack); i++ {
+		if sStack[i] != tStack[i] {
+			return false
+		}
+	}
+	return true
 }

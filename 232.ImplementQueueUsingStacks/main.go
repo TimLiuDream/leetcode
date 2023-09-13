@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 type MyQueue struct {
 	InputStack  []int //输入栈
 	OutputStack []int //输出栈
@@ -7,8 +9,10 @@ type MyQueue struct {
 
 /** Initialize your data structure here. */
 func Constructor() MyQueue {
-	queue := MyQueue{[]int{}, []int{}}
-	return queue
+	return MyQueue{
+		InputStack:  []int{},
+		OutputStack: []int{},
+	}
 }
 
 /** Push element x to the back of queue. */
@@ -41,8 +45,8 @@ func (this *MyQueue) Peek() int {
 	if len(this.InputStack) != 0 {
 		for i := len(this.InputStack) - 1; i >= 0; i-- {
 			this.OutputStack = append(this.OutputStack, this.InputStack[i])
-			this.InputStack = this.InputStack[:i]
 		}
+		this.InputStack = []int{}
 		return this.OutputStack[len(this.OutputStack)-1]
 	}
 	return 0
@@ -50,17 +54,14 @@ func (this *MyQueue) Peek() int {
 
 /** Returns whether the queue is empty. */
 func (this *MyQueue) Empty() bool {
-	if len(this.InputStack)+len(this.OutputStack) == 0 {
-		return true
-	}
-	return false
+	return len(this.InputStack)+len(this.OutputStack) == 0
 }
 
 func main() {
 	queue := Constructor()
 	queue.Push(1)
 	queue.Push(2)
-	_ = queue.Peek()
-	_ = queue.Pop()
-	_ = queue.Empty()
+	fmt.Println(queue.Peek())
+	fmt.Println(queue.Pop())
+	fmt.Println(queue.Empty())
 }
