@@ -16,11 +16,11 @@ func main() {
 			},
 		},
 	}
-	node1 := removeElements(head1, 7)
+	node1 := removeElements1(head1, 7)
 	fmt.Println(node1)
 
 	var head2 *ListNode
-	node2 := removeElements(head2, 1)
+	node2 := removeElements1(head2, 1)
 	fmt.Println(node2)
 
 	//[1,2,6,3,4,5,6], val = 6
@@ -46,7 +46,7 @@ func main() {
 			},
 		},
 	}
-	node3 := removeElements(head3, 6)
+	node3 := removeElements1(head3, 6)
 	fmt.Println(node3)
 }
 
@@ -55,6 +55,7 @@ type ListNode struct {
 	Next *ListNode
 }
 
+// 递归解法
 func removeElements(head *ListNode, val int) *ListNode {
 	if head == nil {
 		return nil
@@ -63,21 +64,22 @@ func removeElements(head *ListNode, val int) *ListNode {
 	if head.Val == val {
 		dummy.Next = removeElements(head.Next, val)
 	} else {
-		tmp := removeElements(head.Next, val)
-		dummy.Next = head
-		head.Next = tmp
+		tmp := head
+		tmp.Next = removeElements(head.Next, val)
+		dummy.Next = tmp
 	}
 	return dummy.Next
 }
 
-// removeElements1 首先对除了头节点 head 以外的节点进行删除操作，然后判断 head 的节点值是否等于给定的 val。
+// 迭代解法
 func removeElements1(head *ListNode, val int) *ListNode {
-	if head == nil {
-		return head
+	dummy := &ListNode{Next: head}
+	for tmp := dummy; tmp.Next != nil; {
+		if tmp.Next.Val != val {
+			tmp = tmp.Next
+		} else {
+			tmp.Next = tmp.Next.Next
+		}
 	}
-	head.Next = removeElements(head.Next, val)
-	if head.Val == val {
-		return head.Next
-	}
-	return head
+	return dummy.Next
 }

@@ -22,10 +22,10 @@ func reversrList(head *ListNode) *ListNode {
 }
 
 func reversrList1(head *ListNode) *ListNode {
-	cur := head
-	var pre *ListNode = nil
-	for cur != nil {
-		pre, cur, cur.Next = cur, cur.Next, pre //这句话最重要
+	var pre *ListNode
+	curr := head
+	for curr != nil {
+		pre, curr, curr.Next = curr, curr.Next, pre
 	}
 	return pre
 }
