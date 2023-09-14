@@ -34,10 +34,16 @@ func (l *LinkStack) Put(v interface{}) {
 	l.head = node
 }
 
+func (l *LinkStack) Peek() interface{} {
+	return l.head.val
+}
+
 func (l *LinkStack) Itera() {
 	dummy := l.head
+	str := "intra values: "
 	for dummy != nil {
-		fmt.Println(dummy.val)
+		str += fmt.Sprintf("%v ", dummy.val)
 		dummy = dummy.next
 	}
+	fmt.Println(str)
 }

@@ -14,6 +14,7 @@ func main() {
 	fmt.Println(firstUniqChar1(s1))
 }
 
+// 计数器
 func firstUniqChar(s string) int {
 	mapCharCount := make(map[rune]int)
 	for _, c := range s {

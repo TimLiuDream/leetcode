@@ -3,6 +3,7 @@ package main
 type Stack interface {
 	Pop() interface{}
 	Put(v interface{})
+	Peek() interface{}
 	Itera()
 }
 

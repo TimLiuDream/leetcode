@@ -3,6 +3,7 @@ package main
 type Queue interface {
 	enqueue(v interface{})
 	dequeue() interface{}
+	peek() interface{}
 	Itera()
 }
 

@@ -36,10 +36,19 @@ func (l *LinkQueue) dequeue() interface{} {
 	return value
 }
 
+func (l *LinkQueue) peek() interface{} {
+	if l.head == nil {
+		return nil
+	}
+	return l.head.val
+}
+
 func (l *LinkQueue) Itera() {
+	str := "itera values: "
 	dummy := l.head
 	for dummy != nil {
-		fmt.Println(dummy.val)
+		str += fmt.Sprintf("%v ", dummy.val)
 		dummy = dummy.next
 	}
+	fmt.Println(str)
 }

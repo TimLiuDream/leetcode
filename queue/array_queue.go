@@ -25,8 +25,17 @@ func (a *ArrayQueue) dequeue() interface{} {
 	return v
 }
 
-func (a *ArrayQueue) Itera() {
-	for _, v := range a.array {
-		fmt.Println(v)
+func (a *ArrayQueue) peek() interface{} {
+	if len(a.array) == 0 {
+		return nil
 	}
+	return a.array[0]
+}
+
+func (a *ArrayQueue) Itera() {
+	str := "itera values: "
+	for _, v := range a.array {
+		str += fmt.Sprintf("%v ", v)
+	}
+	fmt.Println(str)
 }

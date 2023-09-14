@@ -25,8 +25,14 @@ func (s *ArrayStack) Put(v interface{}) {
 	s.array = append(s.array, v)
 }
 
+func (s *ArrayStack) Peek() interface{} {
+	return s.array[len(s.array)-1]
+}
+
 func (s *ArrayStack) Itera() {
+	str := "intra values: "
 	for i := len(s.array) - 1; i >= 0; i-- {
-		fmt.Println(s.array[i])
+		str += fmt.Sprintf("%v ", s.array[i])
 	}
+	fmt.Println(str)
 }

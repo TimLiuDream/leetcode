@@ -35,9 +35,7 @@ func (this *MyStack) Pop() int {
 /** Get the top element. */
 func (this *MyStack) Top() int {
 	if this.q1.Len() == 1 {
-		res := this.q1.Pop()
-		this.q1.Push(res)
-		return res
+		return this.q1.Peek()
 	}
 	for this.q1.Len() > 1 {
 		this.q2.Push(this.q1.Pop())
