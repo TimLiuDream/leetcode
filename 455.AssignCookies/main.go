@@ -6,17 +6,17 @@ import (
 )
 
 func main() {
-	// g := []int{1, 2, 3}
-	// s := []int{1, 1}
-	// fmt.Println(findContentChildren(g, s))
-
-	// g := []int{1, 2}
-	// s := []int{1, 2, 3}
-	// fmt.Println(findContentChildren(g, s))
-
-	g := []int{10, 9, 8, 7}
-	s := []int{5, 6, 7, 8}
+	g := []int{1, 2, 3}
+	s := []int{1, 1}
 	fmt.Println(findContentChildren(g, s))
+
+	g1 := []int{1, 2}
+	s1 := []int{1, 2, 3}
+	fmt.Println(findContentChildren(g1, s1))
+
+	g2 := []int{10, 9, 8, 7}
+	s2 := []int{5, 6, 7, 8}
+	fmt.Println(findContentChildren(g2, s2))
 }
 
 func findContentChildren(g []int, s []int) int {
@@ -24,14 +24,10 @@ func findContentChildren(g []int, s []int) int {
 	sort.Ints(s)
 
 	result := 0
-	i := 0
-	for _, sValue := range s {
-		for i <= len(g)-1 {
-			if sValue >= g[i] {
-				result++
-				i++
-			}
-			break
+	for i := 0; i < len(s) && len(g) > 0; i++ {
+		if s[i] >= g[0] {
+			g = g[1:]
+			result++
 		}
 	}
 	return result

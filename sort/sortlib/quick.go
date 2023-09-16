@@ -10,11 +10,12 @@ func QuickSort(arr []int) []int {
 }
 
 func _quickSort(arr []int, left, right int) []int {
-	if left < right {
-		partitionIndex := partition(arr, left, right)
-		_quickSort(arr, left, partitionIndex-1)
-		_quickSort(arr, partitionIndex+1, right)
+	if left >= right {
+		return arr
 	}
+	pivot := partition(arr, left, right)
+	_quickSort(arr, left, pivot-1)
+	_quickSort(arr, pivot+1, right)
 	return arr
 }
 
