@@ -21,6 +21,7 @@ func majorityElement1(nums []int) int {
 	for key, value := range numCountMap {
 		if value >= maxCount {
 			maxKey = key
+			maxCount = value
 		}
 	}
 	return maxKey

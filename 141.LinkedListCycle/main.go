@@ -10,12 +10,11 @@ type ListNode struct {
 }
 
 func hasCycle(head *ListNode) bool {
-	//先定义两个指针，一个快指针，一个慢指针，都指向头
 	fast, slow := head, head
 	for fast != nil && slow != nil && fast.Next != nil {
-		slow = slow.Next      //慢指针每次走一步
-		fast = fast.Next.Next //快指针每次走两步
-		if slow == fast {     //当链表是有环得话，那么快慢指针一定会相遇
+		fast = fast.Next.Next
+		slow = slow.Next
+		if fast == slow {
 			return true
 		}
 	}
@@ -38,7 +37,7 @@ func hasCycle1(head *ListNode) bool {
 func main() {
 	head := ListNode{}
 	head.Val = 1
-	fmt.Println(hasCycle1(&head))
+	fmt.Println(hasCycle(&head))
 
 	head1 := ListNode{}
 	head1.Val = 1
@@ -46,7 +45,7 @@ func main() {
 	node1.Val = 2
 	head1.Next = &node1
 	node1.Next = &head1
-	fmt.Println(hasCycle1(&head1))
+	fmt.Println(hasCycle(&head1))
 
 	head2 := ListNode{}
 	head2.Val = 3
@@ -60,5 +59,5 @@ func main() {
 	node21.Next = &node22
 	node22.Next = &node23
 	node23.Next = &node21
-	fmt.Println(hasCycle1(&head2))
+	fmt.Println(hasCycle(&head2))
 }
