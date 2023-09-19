@@ -27,6 +27,7 @@ func NewHashMap(cap int) *HashMap {
 	hashMap.cap = cap
 	return hashMap
 }
+
 func (h *HashMap) Index(key string) int {
 	return BKDRHash(key, h.cap) //计算键的哈希值
 }
