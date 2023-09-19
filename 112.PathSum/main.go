@@ -1,13 +1,21 @@
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
 type TreeNode struct {
 	Val   int
 	Left  *TreeNode
 	Right *TreeNode
+}
+
+func hasPathSum(root *TreeNode, sum int) bool {
+	if root == nil {
+		return false
+	}
+	if root.Left == nil && root.Right == nil {
+		return root.Val == sum
+	}
+	return hasPathSum(root.Left, sum-root.Val) || hasPathSum(root.Right, sum-root.Val)
 }
 
 func main() {
@@ -40,22 +48,4 @@ func main() {
 	l5.Right = l8
 
 	fmt.Println(hasPathSum(root, 22))
-}
-
-func hasPathSum(root *TreeNode, sum int) bool {
-	if root == nil {
-		return false
-	}
-	if root.Left == nil && root.Right == nil {
-		return root.Val == sum
-	}
-	r1 := false
-	r2 := false
-	if root.Left != nil {
-		r1 = hasPathSum(root.Left, sum-root.Val)
-	}
-	if root.Right != nil {
-		r2 = hasPathSum(root.Right, sum-root.Val)
-	}
-	return r1 || r2
 }

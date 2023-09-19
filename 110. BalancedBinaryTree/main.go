@@ -14,28 +14,33 @@ func isBalanced(root *TreeNode) bool {
 	if root == nil {
 		return true
 	}
-	return abs(height(root.Left)-height(root.Right)) <= 1 && isBalanced(root.Left) && isBalanced(root.Right)
+	lBalanced := isBalanced(root.Left)
+	rBalanced := isBalanced(root.Right)
+	sub := abs(maxDepth(root.Left) - maxDepth(root.Right))
+	return sub <= 1 && lBalanced && rBalanced
 }
 
-func height(root *TreeNode) int {
-	if root == nil {
+func maxDepth(node *TreeNode) int {
+	if node == nil {
 		return 0
 	}
-	return max(height(root.Left), height(root.Right)) + 1
+	lDepth := maxDepth(node.Left)
+	rDepth := maxDepth(node.Right)
+	return 1 + max(lDepth, rDepth)
 }
 
-func max(x, y int) int {
-	if x > y {
-		return x
+func max(a, b int) int {
+	if a > b {
+		return a
 	}
-	return y
+	return b
 }
 
-func abs(x int) int {
-	if x < 0 {
-		return -1 * x
+func abs(a int) int {
+	if a < 0 {
+		return -a
 	}
-	return x
+	return a
 }
 
 func main() {
