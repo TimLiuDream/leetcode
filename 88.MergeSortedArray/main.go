@@ -34,20 +34,22 @@ func merge(nums1 []int, m int, nums2 []int, n int) {
 			tIndex++
 		}
 	}
-	fmt.Println(nums1)
 }
 
+// 合并后排序
 func merge1(nums1 []int, m int, nums2 []int, n int) {
 	for i := m; i < m+n; i++ {
 		nums1[i] = nums2[i-m]
 	}
+	// 或者使用以下 copy 方式
+	//copy(nums1[m:], nums2)
 	sort.Ints(nums1)
-	fmt.Println(nums1)
 }
 
+// 普通双指针
 func merge2(nums1 []int, m int, nums2 []int, n int) {
 	p1, p2 := 0, 0
-	result := make([]int, 0)
+	result := []int{}
 	for {
 		if p1 == m {
 			result = append(result, nums2[p2:]...)
@@ -57,7 +59,7 @@ func merge2(nums1 []int, m int, nums2 []int, n int) {
 			result = append(result, nums1[p1:]...)
 			break
 		}
-		if nums1[p1] <= nums2[p2] {
+		if nums1[p1] < nums2[p2] {
 			result = append(result, nums1[p1])
 			p1++
 		} else {
@@ -72,12 +74,15 @@ func main() {
 	num1 := []int{1, 2, 3, 0, 0, 0}
 	num2 := []int{2, 5, 6}
 	merge(num1, 3, num2, 3)
+	fmt.Println(num1)
 
 	num1 = []int{1, 2, 3, 0, 0, 0}
 	num2 = []int{2, 5, 6}
 	merge1(num1, 3, num2, 3)
+	fmt.Println(num1)
 
 	num1 = []int{1, 2, 3, 0, 0, 0}
 	num2 = []int{2, 5, 6}
 	merge2(num1, 3, num2, 3)
+	fmt.Println(num1)
 }
