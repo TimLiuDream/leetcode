@@ -6,6 +6,7 @@ import (
 )
 
 // 分数互不相同
+// 排序解法
 func findRelativeRanks(score []int) []string {
 	// 将分数以及对应的索引转换成 map
 	m := map[int]int{}
