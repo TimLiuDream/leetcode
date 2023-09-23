@@ -55,15 +55,13 @@ func longestCommonPrefix(strs []string) string {
 
 func longestCommonPrefix1(strs []string) string {
 	short := shortest(strs)
-
 	for i, r := range short {
-		for j := 0; j < len(strs); j++ {
-			if strs[j][i] != byte(r) {
-				return strs[j][:i]
+		for _, str := range strs {
+			if str[i] != byte(r) {
+				return str[:i]
 			}
 		}
 	}
-
 	return short
 }
 
@@ -84,4 +82,5 @@ func shortest(strs []string) string {
 
 func main() {
 	fmt.Println(longestCommonPrefix([]string{"flower", "flow", "flight"}))
+	fmt.Println(longestCommonPrefix1([]string{"flower", "flow", "flight"}))
 }
