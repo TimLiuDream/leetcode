@@ -30,6 +30,45 @@ func reversrList1(head *ListNode) *ListNode {
 	return pre
 }
 
+// 递归写法
+func reverseList(head *ListNode) *ListNode {
+	// 递归终止条件，当链表为空或只有一个节点时直接返回
+	if head == nil || head.Next == nil {
+		return head
+	}
+
+	// 递归调用，反转后的链表头节点为 newHead
+	newHead := reverseList(head.Next)
+
+	// 将当前节点的下一个节点的 Next 指针指向当前节点，实现反转
+	head.Next.Next = head
+
+	// 将当前节点的 Next 指针置为 nil，断开与下一个节点的连接
+	head.Next = nil
+
+	return newHead
+}
+
+// 递归写法
+func reverseList1(head *ListNode) *ListNode {
+	var pre *ListNode
+	curr := head
+
+	var tra func(node *ListNode)
+	tra = func(node *ListNode) {
+		if node == nil {
+			return
+		}
+		next := node.Next
+		node.Next = pre
+		pre = node
+		node = next
+		tra(node)
+	}
+	tra(curr)
+	return pre
+}
+
 func main() {
 	head := new(ListNode)
 	head.Val = 1
@@ -46,6 +85,6 @@ func main() {
 	ln3.Next = ln4
 	ln4.Next = ln5
 
-	pre := reversrList1(head)
+	pre := reverseList1(head)
 	fmt.Println(pre)
 }
