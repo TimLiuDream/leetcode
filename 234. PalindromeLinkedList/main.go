@@ -16,19 +16,19 @@ func main() {
 			},
 		},
 	}
-	fmt.Println(isPalindrome(head))
+	fmt.Println(isPalindrome2(head))
 	head2 := &ListNode{
 		Val: 1,
 		Next: &ListNode{
 			Val: 2,
 		},
 	}
-	fmt.Println(isPalindrome(head2))
+	fmt.Println(isPalindrome2(head2))
 
 	head3 := &ListNode{
 		Val: 1,
 	}
-	fmt.Println(isPalindrome(head3))
+	fmt.Println(isPalindrome2(head3))
 }
 
 type ListNode struct {
