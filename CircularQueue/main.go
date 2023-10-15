@@ -7,18 +7,16 @@ import (
 
 // CircleQueue 环型队列
 type CircleQueue struct {
-	MaxSize int
-	Array   []int
-	Front   int
-	Rear    int
+	Array []int
+	Front int
+	Rear  int
 }
 
 func NewCircleQueue(size int) *CircleQueue {
 	return &CircleQueue{
-		MaxSize: size,
-		Array:   make([]int, size),
-		Front:   0,
-		Rear:    0,
+		Array: make([]int, size+1),
+		Front: 0,
+		Rear:  0,
 	}
 }
 
@@ -30,7 +28,7 @@ func (q *CircleQueue) Push(val int) (err error) {
 		return errors.New("queue is full")
 	}
 	q.Array[q.Rear] = val
-	q.Rear = (q.Rear + 1) % q.MaxSize
+	q.Rear = (q.Rear + 1) % len(q.Array)
 	return err
 }
 
@@ -42,13 +40,13 @@ func (q *CircleQueue) Pop() (val int, err error) {
 		return -1, errors.New("queue is empty")
 	}
 	val = q.Array[q.Front]
-	q.Front = (q.Front + 1) % q.MaxSize
+	q.Front = (q.Front + 1) % len(q.Array)
 	return val, err
 }
 
 // IsFull 队列是否满了
 func (q *CircleQueue) IsFull() bool {
-	return (q.Rear+1)%q.MaxSize == q.Front
+	return (q.Rear+1)%len(q.Array) == q.Front
 }
 
 // IsEmpty 队列是否为空
@@ -58,7 +56,7 @@ func (q *CircleQueue) IsEmpty() bool {
 
 // Size 队列的大小
 func (q *CircleQueue) Size() int {
-	return (q.Rear + q.MaxSize - q.Front) % q.MaxSize
+	return (q.Rear + len(q.Array) - q.Front) % len(q.Array)
 }
 
 // Show 显示队列
@@ -72,7 +70,7 @@ func (q *CircleQueue) Show() {
 	tmpFront := q.Front
 	for i := 0; i < size; i++ {
 		fmt.Printf("queue[%d]: %+v\n", tmpFront, q.Array[tmpFront])
-		tmpFront = (tmpFront + 1) % q.MaxSize
+		tmpFront = (tmpFront + 1) % len(q.Array)
 	}
 }
 
@@ -91,6 +89,10 @@ func main() {
 		panic(e)
 	}
 	e = q.Push(4)
+	if e != nil {
+		panic(e)
+	}
+	e = q.Push(5)
 	if e != nil {
 		panic(e)
 	}
