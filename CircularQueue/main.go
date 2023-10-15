@@ -31,7 +31,7 @@ func (q *CircleQueue) Push(val int) (err error) {
 	}
 	q.Array[q.Rear] = val
 	q.Rear = (q.Rear + 1) % q.MaxSize
-	return
+	return err
 }
 
 // Pop 得到一个值
@@ -39,7 +39,7 @@ func (q *CircleQueue) Push(val int) (err error) {
 // 推出队首元素，front 指针向前移动一位
 func (q *CircleQueue) Pop() (val int, err error) {
 	if q.IsEmpty() {
-		return -1, errors.New("队列已空")
+		return -1, errors.New("queue is empty")
 	}
 	val = q.Array[q.Front]
 	q.Front = (q.Front + 1) % q.MaxSize
@@ -62,16 +62,16 @@ func (q *CircleQueue) Size() int {
 }
 
 // Show 显示队列
-// 如果队列为空，则不展示
 // 使用临时变量辅助遍历队列
 func (q *CircleQueue) Show() {
 	size := q.Size()
 	if size == 0 {
 		fmt.Println("queue is empty")
+		return
 	}
 	tmpFront := q.Front
 	for i := 0; i < size; i++ {
-		fmt.Printf("queue[%d]=%v\t", tmpFront, q.Array[tmpFront])
+		fmt.Printf("queue[%d]: %+v\n", tmpFront, q.Array[tmpFront])
 		tmpFront = (tmpFront + 1) % q.MaxSize
 	}
 }
