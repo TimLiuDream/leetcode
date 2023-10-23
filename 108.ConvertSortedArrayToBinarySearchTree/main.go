@@ -22,23 +22,13 @@ func main() {
 func sortedArrayToBST(nums []int) *TreeNode {
 	if len(nums) == 0 {
 		return nil
-	}
-	if len(nums) == 1 {
-		node := new(TreeNode)
-		node.Val = nums[0]
-		return node
+	} else if len(nums) == 1 {
+		return &TreeNode{Val: nums[0]}
 	} else if len(nums) == 2 {
-		node := new(TreeNode)
-		node.Val = nums[1]
-		nodeL := new(TreeNode)
-		nodeL.Val = nums[0]
-		node.Left = nodeL
-		return node
+		return &TreeNode{Val: nums[1], Left: &TreeNode{Val: nums[0]}}
 	}
 	rootIndex := len(nums) / 2
-	rootValue := nums[rootIndex]
-	root := new(TreeNode)
-	root.Val = rootValue
+	root := &TreeNode{Val: nums[rootIndex]}
 	root.Left = sortedArrayToBST(nums[:rootIndex])
 	root.Right = sortedArrayToBST(nums[rootIndex+1:])
 	return root
