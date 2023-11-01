@@ -4,3 +4,4 @@ debug
 *.mod
 algorithm-1
 __debug_bin
+pkg
