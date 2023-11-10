@@ -8,33 +8,36 @@ import (
 // Label 数学
 
 func reverse(x int) int {
-	//用来记录原数据是正还是负的
 	sign := 1
-
-	//处理负数
 	if x < 0 {
 		sign = -1
 		x = sign * x
 	}
-
 	result := 0
 	for x > 0 {
-		//弹出最后一位
-		temp := x % 10
-		//把temp放到result的最前面一位
-		result = result*10 + temp
-		//去掉x的最后一位
+		tmp := x % 10
+		result = result*10 + tmp
 		x = x / 10
 	}
-
-	//还原正负数
-	result = sign * result
-
-	//解决溢出问题
+	if sign <= 0 {
+		result = result * sign
+	}
 	if result > math.MaxInt32 || result < math.MinInt32 {
 		return 0
 	}
 	return result
+}
+
+func reverse1(x int) (rev int) {
+	for x != 0 {
+		if x > math.MaxInt32/10 || x < math.MinInt32/10 {
+			return
+		}
+		tmp := x % 10
+		x /= 10
+		rev = rev*10 + tmp
+	}
+	return
 }
 
 func main() {

@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 func main() {
 	s := []byte{'h', 'e', 'l', 'l', 'o'}
 	reverseString(s)
@@ -15,14 +13,11 @@ func main() {
 }
 
 func reverseString(s []byte) {
-	l := 0
-	r := len(s) - 1
-	for l < r {
+	for l, r := 0, len(s)-1; l < r; {
 		s[l], s[r] = s[r], s[l]
 		l++
 		r--
 	}
-	fmt.Println(string(s))
 }
 
 func reverseString1(s []byte) {
@@ -32,5 +27,4 @@ func reverseString1(s []byte) {
 	for i := 0; i < len(s)/2; i++ {
 		s[i], s[len(s)-1-i] = s[len(s)-1-i], s[i]
 	}
-	fmt.Println(string(s))
 }
