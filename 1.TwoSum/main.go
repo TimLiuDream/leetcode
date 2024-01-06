@@ -7,7 +7,7 @@ import "fmt"
 
 func main() {
 	slice := []int{2, 3, 4}
-	a := twoSum1(slice, 6)
+	a := twoSum2(slice, 6)
 	fmt.Println(a)
 }
 
@@ -46,7 +46,7 @@ func twoSum2(slice []int, i int) []int {
 	for index, value := range slice {
 		mIndex, ok := m[i-value]
 		if ok {
-			return []int{mIndex, index}
+			return []int{index, mIndex}
 		}
 		m[value] = index
 	}
