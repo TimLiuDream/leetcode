@@ -16,7 +16,7 @@ func spiralOrder(matrix [][]int) []int {
 		total          = rows * columns
 		order          = make([]int, total)
 		row, column    = 0, 0
-		directions     = [][]int{[]int{0, 1}, []int{1, 0}, []int{0, -1}, []int{-1, 0}}
+		directions     = [][]int{{0, 1}, {1, 0}, {0, -1}, {-1, 0}}
 		directionIndex = 0
 	)
 
