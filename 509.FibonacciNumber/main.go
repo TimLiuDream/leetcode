@@ -35,16 +35,14 @@ func fib1(N int) int {
 }
 
 // 迭代不缓存
-func fib2(N int) int {
-	if N <= 1 {
-		return N
+func fib2(n int) int {
+	if n == 0 {
+		return 0
+	}
+	a, b := 0, 1
+	for i := 2; i <= n; i++ {
+		b, a = a+b, b
 	}
 
-	nums := make([]int, N+1)
-	nums[0] = 0
-	nums[1] = 1
-	for i := 2; i <= N; i++ {
-		nums[i] = nums[i-1] + nums[i-2]
-	}
-	return nums[N]
+	return b
 }
