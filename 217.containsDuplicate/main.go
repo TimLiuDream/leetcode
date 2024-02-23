@@ -19,7 +19,7 @@ func main() {
 }
 
 func containsDuplicate(nums []int) bool {
-	if len(nums) == 0 || len(nums) == 1 {
+	if len(nums) <= 1 {
 		return false
 	}
 	m := make(map[int]struct{})

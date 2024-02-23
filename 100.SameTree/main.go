@@ -14,29 +14,17 @@ type TreeNode struct {
 func isSameTree(p *TreeNode, q *TreeNode) bool {
 	if p == nil && q == nil {
 		return true
-	} else if p == nil && q != nil {
-		return false
-	} else if p != nil && q == nil {
+	}
+	if p == nil || q == nil {
 		return false
 	}
 
 	if p.Val != q.Val {
 		return false
 	}
-	lResult := true
-	rResult := true
-	if p.Left != nil && q.Left != nil {
-		lResult = isSameTree(p.Left, q.Left)
-	}
-	if (p.Left == nil && q.Left != nil) || (p.Left != nil && q.Left == nil) {
-		return false
-	}
-	if p.Right != nil && q.Right != nil {
-		rResult = isSameTree(p.Right, q.Right)
-	}
-	if (p.Right == nil && q.Right != nil) || (p.Right != nil && q.Right == nil) {
-		return false
-	}
+	lResult, rResult := false, false
+	lResult = isSameTree(p.Left, q.Left)
+	rResult = isSameTree(p.Right, q.Right)
 	return lResult && rResult
 }
 
@@ -93,10 +81,10 @@ func main() {
 	tree2.Val = 1
 	tree2left := new(TreeNode)
 	tree2left.Val = 2
-	tree2righe := new(TreeNode)
-	tree2righe.Val = 3
+	tree2right := new(TreeNode)
+	tree2right.Val = 3
 	tree2.Left = tree2left
-	tree2.Right = tree2righe
+	tree2.Right = tree2right
 
 	fmt.Println(isSameTree1(tree1, tree2))
 }
