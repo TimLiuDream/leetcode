@@ -23,6 +23,20 @@ func lowestCommonAncestor(root, p, q *TreeNode) *TreeNode {
 	}
 }
 
+// 一次遍历
+func lowestCommonAncestor1(root, p, q *TreeNode) (ancestor *TreeNode) {
+	ancestor = root
+	for {
+		if p.Val < ancestor.Val && q.Val < ancestor.Val {
+			ancestor = ancestor.Left
+		} else if p.Val > ancestor.Val && q.Val > ancestor.Val {
+			ancestor = ancestor.Right
+		} else {
+			return
+		}
+	}
+}
+
 func main() {
 	root := TreeNode{}
 	root.Val = 6
@@ -50,5 +64,5 @@ func main() {
 	node2.Right = &node6
 	node4.Left = &node7
 	node4.Right = &node8
-	fmt.Println(lowestCommonAncestor(&root, &node1, &node5))
+	fmt.Println(lowestCommonAncestor1(&root, &node1, &node5))
 }
