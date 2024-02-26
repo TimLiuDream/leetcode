@@ -22,7 +22,7 @@ func main() {
 			Next: nil,
 		},
 	}
-	node1 := getIntersectionNode1(headA, headB)
+	node1 := getIntersectionNode(headA, headB)
 	fmt.Printf("node: %+v\n", node1)
 
 	headA1 := &ListNode{
@@ -51,7 +51,7 @@ func main() {
 			},
 		},
 	}
-	node2 := getIntersectionNode1(headA1, headB1)
+	node2 := getIntersectionNode(headA1, headB1)
 	fmt.Printf("node: %+v\n", node2)
 }
 

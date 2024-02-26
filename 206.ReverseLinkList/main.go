@@ -87,6 +87,6 @@ func main() {
 	ln3.Next = ln4
 	ln4.Next = ln5
 
-	pre := reverseList(head)
+	pre := reversrList(head)
 	fmt.Println(pre)
 }
