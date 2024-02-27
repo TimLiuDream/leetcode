@@ -36,17 +36,15 @@ func climbStairs1(n int) int {
 }
 
 func climbStairs2(n int) int {
-	if n == 1 {
-		return 1
-	} else if n == 2 {
-		return 2
+	if n <= 2 {
+		return n
 	}
-	prev_1, prev_2 := 2, 1
+	pre1, pre2 := 1, 0
 	value := 0
 	for i := 3; i <= n; i++ {
-		value = prev_1 + prev_2
-		prev_2 = prev_1
-		prev_1 = value
+		value = pre1 + pre2
+		pre2 = pre1
+		pre1 = value
 	}
 	return value
 }
