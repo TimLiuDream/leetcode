@@ -20,9 +20,9 @@ func (a *ArrayQueue) dequeue() interface{} {
 	if len(a.array) == 0 {
 		return nil
 	}
-	v := a.array[0]
+	value := a.array[0]
 	a.array = a.array[1:]
-	return v
+	return value
 }
 
 func (a *ArrayQueue) peek() interface{} {

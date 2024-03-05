@@ -26,6 +26,9 @@ func (s *ArrayStack) Put(v interface{}) {
 }
 
 func (s *ArrayStack) Peek() interface{} {
+	if len(s.array) == 0 {
+		return nil
+	}
 	return s.array[len(s.array)-1]
 }
 
