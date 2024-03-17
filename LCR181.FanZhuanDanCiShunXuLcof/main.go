@@ -36,7 +36,7 @@ func reverseMessage1(s string) string {
 		for i >= 0 && s[i] != ' ' {
 			i--
 		}
-		res = res + s[i+1:j+1] + " "
+		res += s[i+1:j+1] + " "
 	}
 	return strings.TrimRight(res, " ")
 }

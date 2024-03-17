@@ -27,8 +27,7 @@ func diameterOfBinaryTree(root *TreeNode) (ans int) {
 		if node == nil {
 			return 0
 		}
-		lDepth := dep(node.Left)
-		rDepth := dep(node.Right)
+		lDepth, rDepth := dep(node.Left), dep(node.Right)
 		ans = max(ans, lDepth+rDepth)
 		return max(lDepth, rDepth) + 1
 	}

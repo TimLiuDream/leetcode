@@ -35,6 +35,9 @@ func (l *LinkStack) Put(v interface{}) {
 }
 
 func (l *LinkStack) Peek() interface{} {
+	if l.head == nil {
+		return nil
+	}
 	return l.head.val
 }
 

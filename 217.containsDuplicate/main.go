@@ -34,7 +34,7 @@ func containsDuplicate(nums []int) bool {
 }
 
 func containsDuplicate1(nums []int) bool {
-	if len(nums) == 0 || len(nums) == 1 {
+	if len(nums) <= 1 {
 		return false
 	}
 	sort.Ints(nums)

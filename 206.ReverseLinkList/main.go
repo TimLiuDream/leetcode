@@ -51,26 +51,6 @@ func reverseList(head *ListNode) *ListNode {
 	return newHead
 }
 
-// 递归写法
-func reverseList1(head *ListNode) *ListNode {
-	var pre *ListNode
-	curr := head
-
-	var tra func(node *ListNode)
-	tra = func(node *ListNode) {
-		if node == nil {
-			return
-		}
-		next := node.Next
-		node.Next = pre
-		pre = node
-		node = next
-		tra(node)
-	}
-	tra(curr)
-	return pre
-}
-
 func main() {
 	head := new(ListNode)
 	head.Val = 1

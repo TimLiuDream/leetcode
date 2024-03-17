@@ -2,6 +2,7 @@ package main
 
 import "fmt"
 
+// 我们首先检查第 000 个加油站，并试图判断能否环绕一周；如果不能，就从第一个无法到达的加油站开始继续检查。
 func canCompleteCircuit(gas []int, cost []int) int {
 	for i, n := 0, len(gas); i < n; {
 		sumOfGas, sumOfCost, cnt := 0, 0, 0

@@ -30,26 +30,23 @@ func threeSum1(nums []int) [][]int {
 		if i > 0 && nums[i] == nums[i-1] {
 			continue
 		}
-		j := i + 1         // 左指针
-		z := len(nums) - 1 // 右指针
-		for z > j {
-			b := nums[j]
-			c := nums[z]
-			if nums[i]+b+c > 0 {
-				z--
-			} else if nums[i]+b+c < 0 {
-				j++
+		left, right := i+1, len(nums)-1
+		for left < right {
+			leftValue, rightValue := nums[left], nums[right]
+			if nums[i]+leftValue+rightValue > 0 {
+				right--
+			} else if nums[i]+leftValue+rightValue < 0 {
+				left++
 			} else {
-				item := []int{nums[i], b, c}
-				result = append(result, item)
-				for j < z && nums[j] == nums[j+1] {
-					j++
+				result = append(result, []int{nums[i], leftValue, rightValue})
+				for left < right && nums[left] == nums[left+1] {
+					left++
 				}
-				for j < z && nums[z] == nums[z-1] {
-					z--
+				for left < right && nums[right] == nums[right-1] {
+					right--
 				}
-				j++
-				z--
+				left++
+				right--
 			}
 		}
 	}

@@ -30,12 +30,12 @@ func (kl *KthLargest) Pop() interface{} {
 	return v
 }
 
-func (this *KthLargest) Add(val int) int {
-	heap.Push(this, val)
-	for this.Len() > this.k {
-		heap.Pop(this)
+func (kl *KthLargest) Add(val int) int {
+	heap.Push(kl, val)
+	if kl.Len() > kl.k {
+		heap.Pop(kl)
 	}
-	return this.IntSlice[0]
+	return kl.IntSlice[0]
 }
 
 func main() {

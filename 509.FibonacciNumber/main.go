@@ -18,20 +18,22 @@ func fib(N int) int {
 }
 
 // 递归缓存
-func fib1(N int) int {
+func fib1(n int) int {
 	m := make(map[int]int)
 	var f func(n int) int
-	f = func(n int) int {
-		if n == 0 || n == 1 {
-			return n
+	f = func(i int) int {
+		if i <= 1 {
+			return i
 		}
-		if v, ok := m[n]; ok {
+		v, ok := m[i]
+		if ok {
 			return v
 		}
-		m[n] = f(n-1) + f(n-2)
-		return m[n]
+		value := f(i-1) + f(i-2)
+		m[i] = value
+		return value
 	}
-	return f(N-1) + f(N-2)
+	return f(n-1) + f(n-2)
 }
 
 // 迭代不缓存
