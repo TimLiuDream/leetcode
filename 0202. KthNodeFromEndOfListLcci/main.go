@@ -34,6 +34,19 @@ func kthToLast1(head *ListNode, k int) int {
 	return target.Val
 }
 
+// 快慢指针
+func kthToLast2(h *ListNode, k int) int {
+	slow, fast := h, h
+	for ; k > 0; k-- {
+		fast = fast.Next
+	}
+	for fast != nil {
+		fast = fast.Next
+		slow = slow.Next
+	}
+	return slow.Val
+}
+
 func main() {
 	head := &ListNode{Val: 1}
 	node1 := &ListNode{Val: 2}

@@ -61,7 +61,55 @@ func shortest(strs []string) string {
 	return res
 }
 
+func longestCommonPrefix2(strs []string) string {
+	if len(strs) == 0 {
+		return ""
+	}
+	for i := 0; i < len(strs[0]); i++ {
+		for j := 1; j < len(strs); j++ {
+			if i == len(strs[j]) || strs[j][i] != strs[0][i] {
+				return strs[0][:i]
+			}
+		}
+	}
+	return strs[0]
+}
+
+func longestCommonPrefix3(strs []string) string {
+	if len(strs) == 0 {
+		return ""
+	}
+
+	isCommonPrefix := func(length int) bool {
+		str0, count := strs[0][:length], len(strs)
+		for i := 1; i < count; i++ {
+			if strs[i][:length] != str0 {
+				return false
+			}
+		}
+		return true
+	}
+	minLength := len(strs[0])
+	for _, s := range strs {
+		if len(s) < minLength {
+			minLength = len(s)
+		}
+	}
+	low, high := 0, minLength
+	for low < high {
+		mid := (low + high) / 2 //(high-low+1)/2 + low
+		if isCommonPrefix(mid) {
+			low = mid
+		} else {
+			high = mid - 1
+		}
+	}
+	return strs[0][:low]
+}
+
 func main() {
 	fmt.Println(longestCommonPrefix([]string{"flower", "flow", "flight"}))
 	fmt.Println(longestCommonPrefix1([]string{"flower", "flow", "flight"}))
+	fmt.Println(longestCommonPrefix2([]string{"flower", "flow", "flight"}))
+	fmt.Println(longestCommonPrefix3([]string{"flower", "flow", "flight"}))
 }

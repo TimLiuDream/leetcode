@@ -8,19 +8,6 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
-func main() {
-	root := &TreeNode{
-		Val: 1,
-		Left: &TreeNode{
-			Val:   2,
-			Left:  &TreeNode{Val: 4},
-			Right: &TreeNode{Val: 5},
-		},
-		Right: &TreeNode{Val: 3},
-	}
-	fmt.Println(diameterOfBinaryTree(root))
-}
-
 func diameterOfBinaryTree(root *TreeNode) (ans int) {
 	var dep func(node *TreeNode) int
 	dep = func(node *TreeNode) int {
@@ -40,4 +27,17 @@ func max(a, b int) int {
 		return b
 	}
 	return a
+}
+
+func main() {
+	root := &TreeNode{
+		Val: 1,
+		Left: &TreeNode{
+			Val:   2,
+			Left:  &TreeNode{Val: 4},
+			Right: &TreeNode{Val: 5},
+		},
+		Right: &TreeNode{Val: 3},
+	}
+	fmt.Println(diameterOfBinaryTree(root))
 }
