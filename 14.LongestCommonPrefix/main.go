@@ -97,7 +97,7 @@ func longestCommonPrefix3(strs []string) string {
 	}
 	low, high := 0, minLength
 	for low < high {
-		mid := (low + high) / 2 //(high-low+1)/2 + low
+		mid := (high-low+1)/2 + low
 		if isCommonPrefix(mid) {
 			low = mid
 		} else {

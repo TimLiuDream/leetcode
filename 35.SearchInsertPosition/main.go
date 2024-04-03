@@ -21,7 +21,7 @@ func searchInsert1(nums []int, target int) int {
 	}
 	left, right := 0, len(nums)-1
 	for left <= right {
-		mid := (left + right) / 2 //(right - left) >> 1 + left
+		mid := (right-left)>>1 + left
 		if nums[mid] >= target {
 			if mid == 0 || nums[mid-1] < target {
 				return mid
