@@ -3,30 +3,26 @@ package main
 import "fmt"
 
 func getRow(rowIndex int) []int {
-	numsGroup := make([][]int, 0)
+	numsGroup := make([][]int, rowIndex+1)
 	for i := 0; i <= rowIndex; i++ {
 		if i == 0 {
-			nums := []int{1}
-			numsGroup = append(numsGroup, nums)
+			numsGroup[i] = []int{1}
 		} else if i == 1 {
-			nums := []int{1, 1}
-			numsGroup = append(numsGroup, nums)
+			numsGroup[i] = []int{1, 1}
 		} else {
 			nums := make([]int, i+1)
-			nums[0] = 1
-			nums[len(nums)-1] = 1
-			preNums := numsGroup[i-1]
+			nums[0], nums[len(nums)-1] = 1, 1
 			for j := 1; j < len(nums)-1; j++ {
-				nums[j] = preNums[j-1] + preNums[j]
+				nums[j] = numsGroup[i-1][j-1] + numsGroup[i-1][j]
 			}
-			numsGroup = append(numsGroup, nums)
+			numsGroup[i] = nums
 		}
 	}
 	return numsGroup[rowIndex]
 }
 
 func main() {
-	num := 3
-	nums := getRow(num)
-	fmt.Println(nums)
+	fmt.Println(getRow(3))
+	fmt.Println(getRow(0))
+	fmt.Println(getRow(1))
 }
